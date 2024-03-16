@@ -1,0 +1,47 @@
+<h3>Contribuyentes</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>RNC / Cedula</th>
+      <th>Nombre</th>
+      <th>Típo</th>
+      <th>Estatus</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contribuyente of contribuyentes">
+      <td>{{contribuyente.id}}</td>
+      <td>{{contribuyente.rncCedula}}</td>
+      <td>{{contribuyente.nombre}}</td>
+      <td>{{contribuyente.tipo}}</td>
+      <td>{{contribuyente.estatus}}</td>
+      <td><button type="button" (click)="getComprobantes(contribuyente.rncCedula)" class="btn btn-primary btn-sm">Seleccionar</button></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Comprobantes fiscales</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>RNC / Cedula</th>
+      <th>NCF</th>
+      <th>Monto</th>
+      <th>ITBIS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let comprobante of comprobantes">
+      <td>{{comprobante.id}}</td>
+      <td>{{comprobante.rncCedula}}</td>
+      <td>{{comprobante.ncf}}</td>
+      <td>{{comprobante.monto | currency:'RD$' }}</td>
+      <td>{{comprobante.itbis18 | currency:'RD$' }}</td>
+      </tr>
+  </tbody>
+</table>
+<div class="float-end">
+  Total itbis: {{ totalComprobantesItbis | currency:'RD$' }}
+</div>
